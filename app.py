@@ -42,7 +42,22 @@ def encode_image(image_file):
     return f"data:{mime};base64,{base64_image}"
 
 # Streamlit application layout
-st.title("Visión Artificial NG")
+st.title("NicoGPT - Visión Artificial")
+
+# Subtítulo descriptivo del proyecto
+st.markdown("""
+    <style>
+    .small-font {
+        font-size:20px !important;
+    }
+    </style>
+    <p class="small-font">Explora el poder de la IA para analizar y comprender imágenes</p>
+    """, unsafe_allow_html=True)
+
+# Insertar imagen con HTML/CSS
+
+st.image('img/visionartificial.png', width=300)
+
 
 # Upload the image
 uploaded_file = st.file_uploader("Carga una imagen", type=['jpg', 'jpeg', 'png'])

@@ -69,44 +69,46 @@ api_key = os.getenv('OPENAI_API_KEY')
 
 
 if submit_button and uploaded_file is not None:
-    # Encode the uploaded image
-    base64_image = encode_image(uploaded_file)
+    with st.spinner('Procesando la imagen...'):
+        # Encode the uploaded image
+        base64_image = encode_image(uploaded_file)
 
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}"
-    }
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}"
+        }
 
-    payload = {
-        "model": "gpt-4-vision-preview",
-        "messages": [
-          {
-            "role": "user",
-            "content": [
+        payload = {
+            "model": "gpt-4-vision-preview",
+            "messages": [
               {
-                "type": "text",
-                "text": input_text
-              },
-              {
-                "type": "image_url",
-                "image_url": {
-                  "url": base64_image
-                }
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": input_text
+                  },
+                  {
+                    "type": "image_url",
+                    "image_url": {
+                      "url": base64_image
+                    }
+                  }
+                ]
               }
-            ]
-          }
-        ],
-        "max_tokens": 300
-    }
+            ],
+            "max_tokens": 300
+        }
 
-    # Send POST request to OpenAI API
-    response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
-    result = response.json()
+        # Send POST request to OpenAI API
+        response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
+        result = response.json()
 
-    # Extraer solo el 'content' del resultado
-    content = result['choices'][0]['message']['content'] if result['choices'] else 'No se encontró contenido'
+        # Extraer solo el 'content' del resultado
+        content = result['choices'][0]['message']['content'] if result['choices'] else 'No se encontró contenido'
+        
+        # Detener la animación de carga
+        st.success('¡Imagen procesada!')
 
     # Mostrar el 'content' en Streamlit
     st.write(content)
-
-# Run the streamlit application by typing `streamlit run app.py` in your terminal.

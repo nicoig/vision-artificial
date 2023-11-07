@@ -1,0 +1,19 @@
+# Ignorar archivo de variables de entorno
+.env
+
+# Ignorar archivos de configuración local
+config.json
+
+# Ignorar carpeta node_modules
+node_modules/
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar archivos compilados
+*.class
+*.pyc
+
+# Ignorar directorios de artefactos de construcción
+dist/
+build/

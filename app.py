@@ -4,7 +4,8 @@
 # Primera Carga a Github
 # git init
 # git add .
-# git remote add origin https://github.com/nicoig/ChatPDF.git
+# git remote add origin https://github.com/nicoig/vision-artificial.git
+# git commit -m "Initial commit"
 # git push -u origin master
 
 # Actualizar Repo de Github

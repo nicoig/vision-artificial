@@ -42,13 +42,13 @@ def encode_image(image_file):
     return f"data:{mime};base64,{base64_image}"
 
 # Streamlit application layout
-st.title("NicoGPT - Visión Artificial")
+st.title("NGPT - Visión Artificial")
 
 # Subtítulo descriptivo del proyecto
 st.markdown("""
     <style>
     .small-font {
-        font-size:20px !important;
+        font-size:18px !important;
     }
     </style>
     <p class="small-font">Explora el poder de la IA para analizar y comprender imágenes</p>
